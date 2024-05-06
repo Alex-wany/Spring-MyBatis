@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///boot
+    username: root
+    password: 12345678
+    type: com.alibaba.druid.pool.DruidDataSource
+
+#mybatis:
+#  如果mapper 接口和 mapper的xml 文件不在同一个目录不同名，可自定义 mapper对应 xml 文件的路径，但一般不要
+#  mapper-locations: classpath:com/javasm/mapper/UserMapper.xml
+#  设定 mapper配置文件路径，使配置生效
+#  config-location: classpath:mybatis-config.xml
+#  设置别名
+#  type-aliases-package: com.javasm.entity
+#  开启驼峰命名
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    开启日志
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+mybatis-plus:
+  configuration:
+#    开启日志 作用：在控制台输出sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    开启驼峰命名 作用：数据库字段名和实体类属性名一致
+    map-underscore-to-camel-case: true
+#    设置别名 作用：在mapper.xml文件中可以直接使用别名 例如： <resultMap type="user" id="userMap">
+  type-aliases-package: com.javasm.entity
