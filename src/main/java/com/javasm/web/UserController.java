@@ -4,9 +4,11 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageHelper;
 
 import com.github.pagehelper.PageInfo;
+import com.javasm.Util.R;
 import com.javasm.entity.User;
 import com.javasm.service.UserService;
 import com.javasm.service.impl.UserServiceImpl;
+import com.javasm.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,7 @@ public class UserController {
     private DataSource dataSource;//练习中用来验证数据源是否使用的是druid
 
     //测试pageHelper 分页插件
-    @GetMapping("findAll")
+    @GetMapping("findByPage")
     public List<User> findAll() {
 //        System.out.println(dataSource.getClass());
 
@@ -40,14 +42,22 @@ public class UserController {
         return all;
     }
 
-    //测试 mybatis-plus 的分页插件
-    @GetMapping("findAll2")
-    public List<User> findAll2() {
+
+    @GetMapping("findAll")
+    public ResultVO findAll2() {
 
         List<User> all = userService.findAll();
-        PageInfo pageInfo = new PageInfo(all);
 
-        return all;
+
+        //封装返回数据
+        /*ResultVO resultVO = new ResultVO();
+        resultVO.setCode(200);
+        resultVO.setMsg("查询成功");
+        resultVO.setData(all);
+        return resultVO;*/
+
+        //通过封装的方法
+        return R.ok(all);
     }
 
     @GetMapping("findUsers")
