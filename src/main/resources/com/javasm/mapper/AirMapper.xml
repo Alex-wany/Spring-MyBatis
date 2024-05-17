@@ -4,10 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.javasm.mapper.AirMapper">
-    <select id="findByDistractId" resultType="com.javasm.entity.Air">
-        select *
 
+<!--
+    根据区域id查询空气质量
+-->
+    <select id="findByDistractId" resultType="com.javasm.entity.Air">
+        select
+            a.*,d.name as district_name
         from
-            air
+            air a left join district d on a.district_id = d.id
+        <where>
+            <if test="districtId != null">
+                -- 当districtId不为空时，才会拼接sql语句
+                a.district_id = #{districtId}
+            </if>
+        </where>
     </select>
+
+
 </mapper>

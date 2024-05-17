@@ -1,6 +1,7 @@
-package com.javasm.service;
+package com.javasm.mapper;
 
-import com.javasm.entity.User;
+
+import com.javasm.entity.District;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,19 +10,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserServiceTest {
+@RunWith(SpringRunner.class)
+public class DistrictMapperTest {
 
     @Autowired
-    private UserService userService;
+    private DistrictMapper districtMapper;
 
-    //测试Service层的findAll方法
+    //测试DistrictMapper的findAll方法
     @Test
     public void findAll() {
-        List<User> all = userService.findAll();
+        List<District> all = districtMapper.findAll();
         System.out.println(all);
     }
-
 
 }

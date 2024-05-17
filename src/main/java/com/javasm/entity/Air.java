@@ -1,103 +1,26 @@
 package com.javasm.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class Air {
 
     private Integer id;
+    @JsonIgnore//忽略字段
     private String districtId;
-    private String districtName;
-    private String monitorTime;
-    private String pm10;
-    private String pm25;
-    private String monitorId;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")//格式化时间
+    private Date monitorTime;
+    private Integer pm10;
+    private Integer pm25;
     private String monitoringStation;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date lastModifyTime;
+    //多表查询映射区域名称 一对一
+    private String districtName;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDistrictId() {
-        return districtId;
-    }
-
-    public void setDistrictId(String districtId) {
-        this.districtId = districtId;
-    }
-
-    public String getDistrictName() {
-        return districtName;
-    }
-
-    public void setDistrictName(String districtName) {
-        this.districtName = districtName;
-    }
-
-    public String getMonitorTime() {
-        return monitorTime;
-    }
-
-    public void setMonitorTime(String monitorTime) {
-        this.monitorTime = monitorTime;
-    }
-
-    public String getPm10() {
-        return pm10;
-    }
-
-    public void setPm10(String pm10) {
-        this.pm10 = pm10;
-    }
-
-    public String getPm25() {
-        return pm25;
-    }
-
-    public void setPm25(String pm25) {
-        this.pm25 = pm25;
-    }
-
-    public String getMonitorId() {
-        return monitorId;
-    }
-
-    public void setMonitorId(String monitorId) {
-        this.monitorId = monitorId;
-    }
-
-    public String getMonitoringStation() {
-        return monitoringStation;
-    }
-
-    public void setMonitoringStation(String monitoringStation) {
-        this.monitoringStation = monitoringStation;
-    }
-
-    public Date getLastModifyTime() {
-        return lastModifyTime;
-    }
-
-    public void setLastModifyTime(Date lastModifyTime) {
-        this.lastModifyTime = lastModifyTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Air{" +
-                "id=" + id +
-                ", districtId='" + districtId + '\'' +
-                ", districtName='" + districtName + '\'' +
-                ", monitorTime='" + monitorTime + '\'' +
-                ", pm10='" + pm10 + '\'' +
-                ", pm25='" + pm25 + '\'' +
-                ", monitorId='" + monitorId + '\'' +
-                ", monitoringStation='" + monitoringStation + '\'' +
-                ", lastModifyTime=" + lastModifyTime +
-                '}';
-    }
 }

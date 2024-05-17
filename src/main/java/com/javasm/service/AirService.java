@@ -1,10 +1,19 @@
 package com.javasm.service;
 
 import com.github.pagehelper.PageInfo;
+import com.javasm.entity.District;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface AirService {
+
+    /**
+     * 查询所有区域信息
+     */
+    List<District> districtList();
+
 
     /**
      * 分页&条件查询空气质量信息
@@ -13,6 +22,8 @@ public interface AirService {
      * @param districtId 区域条件
      */
     PageInfo airListByDistractAndPage(Integer page, Integer limit, String districtId);
+
+
 
 
 }

@@ -1,44 +1,17 @@
 package com.javasm.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+
+//封装返回结果 code  msg  data 三个属性
+@Data//lombok自动生成get set方法 toString方法 无参构造方法 有参构造方法 equals方法 hashCode方法 重写的方法
 public class ResultVO {
     private Integer code;
     private String msg;
     private Object data;
+    @JsonInclude(JsonInclude.Include.NON_NULL)//如果data为null则不返回
+    private long total;
 
-    public ResultVO() {
-    }
 
-    public ResultVO(Integer code, String msg, Object data) {
-        this.code = code;
-        this.msg = msg;
-        this.data = data;
-    }
-
-    public Integer getCode() {
-        return this.code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return this.msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public Object getData() {
-        return this.data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
-
-    public String toString() {
-        return "ResultVO{code=" + this.code + ", msg='" + this.msg + '\'' + ", data=" + this.data + '}';
-    }
 }

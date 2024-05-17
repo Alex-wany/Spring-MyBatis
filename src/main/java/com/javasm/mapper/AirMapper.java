@@ -1,17 +1,18 @@
 package com.javasm.mapper;
 
 
+import com.github.pagehelper.PageInfo;
 import com.javasm.entity.Air;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public class AirMapper {
+public interface AirMapper {
 
-    // 根据区域id查询空气质量信息
 
-    public List<Air> findByDistractId(@Param("districtId") String districtId) {
+    //分页&条件查询空气质量信息
+    List<Air> findByDistractId(String districtId);
 
-        return null;
-    }
+
+
 }

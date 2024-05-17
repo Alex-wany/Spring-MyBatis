@@ -26,4 +26,9 @@ mybatis-plus:
 #    开启驼峰命名 作用：数据库字段名和实体类属性名一致
     map-underscore-to-camel-case: true
 #    设置别名 作用：在mapper.xml文件中可以直接使用别名 例如： <resultMap type="user" id="userMap">
-  type-aliases-package: com.javasm.entity
+    type-aliases-package: com.javasm.entity
+
+#   配置 log 级别
+logging:
+  level:
+    com.javasm: warn
