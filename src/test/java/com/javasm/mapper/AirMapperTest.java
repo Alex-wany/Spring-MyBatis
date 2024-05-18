@@ -39,5 +39,20 @@ public class AirMapperTest {
         Assert.assertEquals(1,insert);//断言 期望值为1 实际值为insert 如果不相等则抛出异常
     }
 
+    @Test
+//    @Transactional//添加事务 保证数据的一致性 事务回滚 保证数据不会污染数据库
+    public void update() {
+        Air air = new Air();
+        air.setId(7);
+        air.setDistrictId("7");
+        air.setMonitoringStation("777站点");
+        air.setMonitorTime(new Date());
+        air.setPm25(100);
+        air.setPm10(200);
+        air.setLastModifyTime(new Date());
+        int update = airMapper.update(air);
+//        Assert.assertEquals(1,update);
+    }
+
 
 }

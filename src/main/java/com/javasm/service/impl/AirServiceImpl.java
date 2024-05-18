@@ -60,10 +60,22 @@ public class AirServiceImpl implements AirService {
         int insert = airMapper.insert(air);
         //判断是否添加成功 如果返回值为0 说明添加失败
         if (insert == 0){
+            System.out.println("添加失败");
             throw new RuntimeException("添加失败");
         }
 
 
+    }
+
+    @Override
+    public void updateAir(Air air) {
+        //调用mapper层方法修改数据
+        int update = airMapper.update(air);
+        //判断是否修改成功 如果返回值为0 说明修改失败
+        if (update == 0){
+            System.out.println("修改失败");
+            throw new RuntimeException("修改失败");
+        }
     }
 
 

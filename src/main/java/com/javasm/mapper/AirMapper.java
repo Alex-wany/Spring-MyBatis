@@ -15,4 +15,6 @@ public interface AirMapper {
 
 
     int insert(Air air);
+
+    int update(Air air);
 }

@@ -11,6 +11,18 @@
         (#{districtId},#{pm10},#{pm25},#{monitorTime},#{monitoringStation})
     </insert>
 
+    <update id="update">
+        update air
+        set
+            pm10 = #{pm10},
+            pm25 = #{pm25},
+            monitor_time = #{monitorTime},
+            monitoring_station = #{monitoringStation},
+            district_id = #{districtId}
+        where
+            id = #{id}
+    </update>
+
     <!--
         根据区域id查询空气质量
     -->

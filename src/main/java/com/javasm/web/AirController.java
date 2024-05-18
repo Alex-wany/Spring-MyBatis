@@ -3,6 +3,7 @@ package com.javasm.web;
 import com.github.pagehelper.PageInfo;
 import com.javasm.Util.R;
 import com.javasm.dto.AirAddDto;
+import com.javasm.entity.Air;
 import com.javasm.service.AirService;
 import com.javasm.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,6 +83,57 @@ public class AirController {
         airService.addAir(districtId,monitoringStation,monitorTime,pm2_5,pm10);
         return R.ok();
     }*/
+
+    /**
+     * 修改空气质量信息
+     * Post http://localhost:8080/air/update
+     * 请求参数  正常为了解耦 会单独封装一个dto对象去接收参数 也可以使用@RequestParam注解接收参数 但是参数较多时不推荐 使用dto对象接收 代码更加清晰
+     * id 主键 必填
+     * districtId 区域id 非必填
+     * monitoringStation 监测站 非必填
+     * monitorTime 监测时间 非必填
+     * pm25 pm2.5 非必填
+     * pm10 pm10 非必填
+     * 业务流程
+     * 1.接收参数
+     * 2.参数校验
+     * 3.调用service层方法添加空气质量信息
+     * 4.返回结果
+    * */
+    @PostMapping("/air/update")
+    public ResultVO updateAir(Air air){
+        //参数校验
+        if(air.getId() == null){
+            return R.error(400,"id不能为空");
+        }
+        //调用service层方法添加空气质量信息
+        airService.updateAir(air);
+        //返回结果
+        return R.ok();
+    }
+
+    /**
+     * 删除空气质量信息
+     * Get http://localhost:8080/air/delete
+     * 请求参数
+     * id 主键 必填
+     * 业务流程
+     * 1.接收参数
+     * 2.参数校验
+     * 3.调用service层方法删除空气质量信息
+     * 4.返回结果
+     * */
+//    @GetMapping("/air/delete")
+//    public ResultVO deleteAir(Integer id){
+//        //参数校验
+//        if(id == null){
+//            return R.error(400,"id不能为空");
+//        }
+//        //调用service层方法删除空气质量信息
+//        airService.deleteAir(id);
+//        //返回结果
+//        return R.ok();
+//    }
 
 
 }

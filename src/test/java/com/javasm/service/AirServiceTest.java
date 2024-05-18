@@ -3,6 +3,7 @@ package com.javasm.service;
 
 import com.github.pagehelper.PageInfo;
 import com.javasm.dto.AirAddDto;
+import com.javasm.entity.Air;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,20 @@ public class AirServiceTest {
         airAddDto.setPm25(100);
         airAddDto.setPm10(200);
         airService.addAir(airAddDto);
+    }
 
+    //测试Service层的updateAir方法
+    @Test
+    public void updateAir() {
+        Air air = new Air();
+        air.setId(7);
+        air.setDistrictId("78");
+        air.setMonitoringStation("888站点");
+        air.setMonitorTime(new Date());
+        air.setPm25(100);
+        air.setPm10(200);
+        air.setLastModifyTime(new Date());
+        airService.updateAir(air);
     }
 
 }

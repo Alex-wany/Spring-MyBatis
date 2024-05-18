@@ -2,6 +2,7 @@ package com.javasm.service;
 
 import com.github.pagehelper.PageInfo;
 import com.javasm.dto.AirAddDto;
+import com.javasm.entity.Air;
 import com.javasm.entity.District;
 import org.springframework.stereotype.Service;
 
@@ -26,4 +27,6 @@ public interface AirService {
 
 
     void addAir(AirAddDto airAddDto);
+
+    void updateAir(Air air);
 }
