@@ -10,6 +10,7 @@ import java.util.Date;
 @Data
 public class AirAddDto {
 
+    //参数校验 使用hibernate-validator 作用是在controller层对参数进行校验 保证参数的合法性
     @NotNull(message = "区域id不能为空")//非空校验
     private String districtId;
     @NotBlank(message = "监测站不能为空")//非空校验 即能校验null 也能校验空字符串
