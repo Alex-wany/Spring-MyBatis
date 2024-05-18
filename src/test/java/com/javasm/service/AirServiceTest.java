@@ -61,4 +61,12 @@ public class AirServiceTest {
         airService.updateAir(air);
     }
 
+    //测试Service层的deleteAir方法
+    @Test
+    public void deleteAir() {
+        airService.deleteAir(7);
+
+    }
+
+
 }

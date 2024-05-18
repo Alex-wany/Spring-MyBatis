@@ -78,5 +78,16 @@ public class AirServiceImpl implements AirService {
         }
     }
 
+    @Override
+    public void deleteAir(Integer id) {
+        //调用mapper层方法删除数据
+        int delete = airMapper.delete(id);
+        //判断是否删除成功 如果返回值为0 说明删除失败
+        if (delete == 0){
+            System.out.println("删除失败");
+            throw new RuntimeException("删除失败");
+        }
+    }
+
 
 }

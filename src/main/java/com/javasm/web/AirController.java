@@ -8,10 +8,7 @@ import com.javasm.service.AirService;
 import com.javasm.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -114,7 +111,7 @@ public class AirController {
 
     /**
      * 删除空气质量信息
-     * Get http://localhost:8080/air/delete
+     * Delete http://localhost:8080/air/delete
      * 请求参数
      * id 主键 必填
      * 业务流程
@@ -123,17 +120,21 @@ public class AirController {
      * 3.调用service层方法删除空气质量信息
      * 4.返回结果
      * */
-//    @GetMapping("/air/delete")
-//    public ResultVO deleteAir(Integer id){
-//        //参数校验
-//        if(id == null){
-//            return R.error(400,"id不能为空");
-//        }
-//        //调用service层方法删除空气质量信息
-//        airService.deleteAir(id);
-//        //返回结果
-//        return R.ok();
-//    }
+    @DeleteMapping("/air/delete/{id}")//此处使用了restful风格 也可以使用@DeleteMapping("/air/delete") 但是不推荐 使用restful风格更加规范
+    public ResultVO deleteAir(@PathVariable Integer id){
+        // @pathVariable 作用是将url中的参数绑定到方法参数上 例如 @DeleteMapping("/air/delete/{id}") 方法参数上使用@PathVariable Integer id 就可以接收到url中的id参数
+        // 不使用@PathVariable注解时 也可以使用@RequestParam注解接收参数 例如 @DeleteMapping("/air/delete") 方法参数上使用@RequestParam Integer id 就可以接收到url中的id参数 但是不推荐 使用@PathVariable注解更加清晰 代码更加规范 也更加符合restful风格
+        // 不使用注解接收参数时 也可以使用HttpServletRequest对象接收参数 例如 @DeleteMapping("/air/delete") 方法参数上使用HttpServletRequest request 就可以通过request.getParameter("id")获取到url中的id参数 但是不推荐 使用注解更加清晰 代码更加规范 也更加符合restful风格
+        //参数校验
+        if(id == null){
+            return R.error(400,"id不能为空");
+        }
+        //调用service层方法删除空气质量信息
+        airService.deleteAir(id);
+        //返回结果
+        return R.ok();
+    }
+
 
 
 }

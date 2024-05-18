@@ -29,4 +29,6 @@ public interface AirService {
     void addAir(AirAddDto airAddDto);
 
     void updateAir(Air air);
+
+    void deleteAir(Integer id);
 }

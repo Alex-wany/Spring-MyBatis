@@ -54,5 +54,11 @@ public class AirMapperTest {
 //        Assert.assertEquals(1,update);
     }
 
+    @Test
+    public void delete() {
+        int delete = airMapper.delete(11);
+        Assert.assertEquals(1,delete);
+    }
+
 
 }
