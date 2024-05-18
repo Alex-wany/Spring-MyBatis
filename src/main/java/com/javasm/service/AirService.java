@@ -1,6 +1,7 @@
 package com.javasm.service;
 
 import com.github.pagehelper.PageInfo;
+import com.javasm.dto.AirAddDto;
 import com.javasm.entity.District;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,5 @@ public interface AirService {
     PageInfo airListByDistractAndPage(Integer page, Integer limit, String districtId);
 
 
-
-
+    void addAir(AirAddDto airAddDto);
 }

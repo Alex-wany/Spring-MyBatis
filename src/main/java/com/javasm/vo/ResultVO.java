@@ -9,8 +9,9 @@ import lombok.Data;
 public class ResultVO {
     private Integer code;
     private String msg;
-    private Object data;
     @JsonInclude(JsonInclude.Include.NON_NULL)//如果data为null则不返回
+    private Object data;
+    @JsonInclude(JsonInclude.Include.NON_NULL)//如果total为null则不返回
     private long total;
 
 

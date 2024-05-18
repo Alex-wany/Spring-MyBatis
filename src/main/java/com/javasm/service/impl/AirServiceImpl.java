@@ -2,13 +2,16 @@ package com.javasm.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.javasm.dto.AirAddDto;
 import com.javasm.entity.Air;
 import com.javasm.entity.District;
 import com.javasm.mapper.AirMapper;
 import com.javasm.mapper.DistrictMapper;
 import com.javasm.service.AirService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -39,6 +42,28 @@ public class AirServiceImpl implements AirService {
         PageInfo pageInfo = new PageInfo(byDistractId);
 //        第四步 返回
         return pageInfo;
+    }
+
+    @Override
+    @Transactional//添加事务 保证数据的一致性
+    public void addAir(AirAddDto airAddDto) {
+        //封装数据
+        Air air = new Air();
+        //使用spring提供的工具类 将airAddDto中的数据拷贝到air中
+        BeanUtils.copyProperties(airAddDto,air);
+       /* air.setDistrictId(airAddDto.getDistrictId());
+        air.setMonitoringStation(airAddDto.getMonitoringStation());
+        air.setMonitorTime(airAddDto.getMonitorTime());
+        air.setPm25(airAddDto.getPm25());
+        air.setPm10(airAddDto.getPm10());*/
+        //调用mapper层方法添加数据
+        int insert = airMapper.insert(air);
+        //判断是否添加成功 如果返回值为0 说明添加失败
+        if (insert == 0){
+            throw new RuntimeException("添加失败");
+        }
+
+
     }
 
 

@@ -32,4 +32,12 @@ public class R {
     }
 
 
+
+    // 构造方法
+    public static ResultVO error(Integer code, String message) {
+        ResultVO resultVO = new ResultVO();
+        resultVO.setCode(code);
+        resultVO.setMsg(message);
+        return resultVO;
+    }
 }

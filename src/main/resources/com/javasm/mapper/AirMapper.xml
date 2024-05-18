@@ -4,10 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.javasm.mapper.AirMapper">
+    <insert id="insert">
+        insert into air
+        (district_id,pm10,pm25,monitor_time,monitoring_station)
+        values
+        (#{districtId},#{pm10},#{pm25},#{monitorTime},#{monitoringStation})
+    </insert>
 
-<!--
-    根据区域id查询空气质量
--->
+    <!--
+        根据区域id查询空气质量
+    -->
     <select id="findByDistractId" resultType="com.javasm.entity.Air">
         select
             a.*,d.name as district_name

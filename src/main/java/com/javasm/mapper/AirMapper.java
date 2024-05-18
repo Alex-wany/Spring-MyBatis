@@ -14,5 +14,5 @@ public interface AirMapper {
     List<Air> findByDistractId(String districtId);
 
 
-
+    int insert(Air air);
 }
